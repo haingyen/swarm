@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         SWARM_MANAGER_IP = '10.0.0.121'
-        SSH_CREDS = credentials('swarm-ssh-access')
+        SSH_CREDS = credentials('swarm-ssh-acess')
     }
     stages {
         stage('Deploy Stack') {
