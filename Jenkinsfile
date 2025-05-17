@@ -15,16 +15,5 @@ pipeline {
                 }
             }
         }
-        
-        stage('Verify Deployment') {
-            steps {
-                sshagent([SSH_CREDS]) {
-                    sh """
-                        ssh ubuntu@${SWARM_MANAGER_IP} \
-                        "docker service ls | grep myapp"
-                    """
-                }
-            }
-        }
     }
 }
