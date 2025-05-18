@@ -1,0 +1,49 @@
+# PROJECTS 
+1. DOCKER SWARM 
+- Front-end ReactJS
+- Jenkins Pipeline
+  - Docker Swarm cluster đã được thiết lập sẵn (manager và worker nodes)
+  - Jenkins server có kết nối đến swarm manager qua sshagent
+  - Ứng dụng đã được đóng gói thành Docker image và push lên registry
+- Build and push on DockerHub
+- Triển khai lên Cluster Docker Swarm - Manager node + Worker node
+- Sử dụng Docker Compose
+- Infrastructure VPC, EC2 instance, az, igw, subnets,...
+
+2. EKS CLUSTER
+- Infratructure:  
+  - EKS + Terraform 
+  - VPC + IGW + subnets + nat + routes + sg
+  - EKS Cluster
+  - Nodes
+  - viewer group
+  - admin group 
+  - helm provider
+  - metrics server
+  - HPA
+  - Cluster AutoScaler
+  - AWS Load Balancer (Service)
+  - Nginx Ingress Controller
+- Pipeline 
+  - Jenkins clone source code trên github
+  - Jenkins build - test - push image lên dockerhub
+  - Argo CD triển khai ứng dụng bằng manifest yaml lên Cluster
+- Application
+  - Front end React - Trang đăng ký, đăng nhập và trang home là Welcome!
+  - Back end Nodejs - Controller, Model, Routes, API
+  - Database MongoDB* Tạo database, user, password, trước để kết nối đến Back end, Database được tạo trong CLUSTER bằng StatefulSet
+- Version Control
+
+
+NOTE: Ưu tiên đầu tiên là phải Security
+- Dựng hạ tầng
+- Phát triển ứng dụng
+- CI/CD để build, test and push ứng dụng (image) lên Registry
+- Deploy ứng dụng lên hạ tầng 
+- Theo dõi hệ thống (hạ tầng, ứng dụng)
+- NẾU ứng dụng lớn lên:
+  - Scaling (thủ công hoặc tự động)
+  - Cân bằng tải và endpoint
+
+https://dev.to/prodevopsguytech/end-to-end-devops-project-building-deploying-and-monitoring-a-full-stack-application-ako
+https://dev.to/prodevopsguytech/50-devops-project-ideas-to-build-your-skills-from-beginner-to-advanced-3e07
