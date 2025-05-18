@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         SWARM_MANAGER_IP = '54.255.224.226'
-        SSH_CREDS = credentials('swarm-ssh-acess')
+        SSH_CREDS = credentials('jenkins-swarm-access')
     }
     stages {
         stage('Deploy Stack') {
