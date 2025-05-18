@@ -3,7 +3,7 @@ pipeline {
         label 'manager-node'
     }
     environment {
-        DOCKER_HUB_CREDS = credentials('docker-hub-creds') 
+        DOCKER_HUB_USER = 'haingyen'
     }
 
     stages {
@@ -14,11 +14,12 @@ pipeline {
         }
         stage('Login to Docker Hub') {
             steps {
-                script {
-                    sh "echo ${DOCKER_HUB_CREDS_PSW} | docker login -u ${DOCKER_HUB_CREDS_USR} --password-stdin"
+                withCredentials([string(credentialsId: 'docker-token', variable: 'DOCKER_HUB_TOKEN')]) {
+                    sh(""" echo \$DOCKER_HUB_TOKEN | docker login -u ${DOCKER_HUB_USER} --password-stdin """, label: "login dockerhub")
                 }
             }
         }
+
         stage('Deploy Stack') {
             steps {
                     sh "docker run --name reactjs-app -d -p 80:80 haingyen/reactjs-app:v1"
