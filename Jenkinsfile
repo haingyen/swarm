@@ -25,7 +25,7 @@ pipeline {
 
         stage('Deploy Stack') {
             steps {
-                    sh "docker run --name reactjs-app -d -p 80:80 haingyen/reactjs-app:v1"
+                    sh "docker-compose up"
             }
          }
     }
